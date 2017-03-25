@@ -1,14 +1,19 @@
 <?php
-function my_theme_enqueue_styles() {
-
-    $parent_style = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
-
-    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'child-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        array( $parent_style ),
-        wp_get_theme()->get('Version')
-    );
+/**
+ * Marquee Child functions and definitions
+ *
+ * @package Marquee
+ */
+/**
+ * Set the content width based on the theme's design and stylesheet.
+ */
+if ( ! isset( $content_width ) ) {
+    $content_width = 620; /* pixels */
 }
-add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
-?>
+if ( ! isset( $full_content_width ) ) {
+    $full_content_width = 960; /* pixels */
+}
+function marquee_child_scripts() {
+    wp_enqueue_style( 'marquee-parent-style', get_template_directory_uri() . '/style.css' );
+}
+add_action( 'wp_enqueue_scripts', 'marquee_child_scripts', 11 );
