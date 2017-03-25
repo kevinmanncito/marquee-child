@@ -1,19 +1,25 @@
 <?php
 
-  /* Template Name: Team Registration Page */
+  /**
+   * The template for displaying full width pages.
+   *
+   * Template Name: Team Registration Page
+   *
+   * @package Rookie
+   */
 
 ?>
 
 <?php get_header(); ?>
 
-<div id="main" class="full">
-  <div id="post-area" class="full">
+<div id="primary" class="content-area content-area-full-width">
+  <main id="main" class="site-main" role="main">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-    <div class="breadcrumb">
-      <?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?>
-    </div><!--breadcrumb-->
-    <h1 class="headline"><?php the_title(); ?></h1>
-    <div id="content-area" class="full">
+
+    <div class="entry-header">
+      <h1 class="entry-title"><?php the_title(); ?></h1>
+    </div>
+    <div id="content-area" class="entry-content">
     
     <?php 
       $show_form = true;
@@ -171,7 +177,7 @@
 
     </div><!--content-area-full-->
     <?php endwhile; endif; ?>
-  </div><!--post-area-full-->
-</div><!--main-full-->
+  </main>
+</div>
 
 <?php get_footer(); ?>
