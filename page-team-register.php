@@ -112,7 +112,6 @@
               FROM wp_terms
               WHERE term_id = ".$term_id->term_id
             );
-            // var_dump($position);
             if ($_POST["league"] === $league[0]->term_id) {
               echo '<option value="'.$league[0]->term_id.'" selected>'.$league[0]->name.'</option>';
             } else {

@@ -152,7 +152,7 @@
         <p>*If you don't know your us lacrosse number you can look it up <a href="https://usl.ebiz.uapps.net/PersonifyEbusiness/Default.aspx?TabID=266&_ga=1.167454270.1443606580.1463102145" target="_blank">here.</a></p>
         
         <p>
-          Jersey number: <strong>all players need a jersey number this year</strong>. If you don't know what your jersey number is yet just choose something and it can be changed later.<br>
+          Jersey number: <strong>all players need a jersey number</strong>. If you don't know what your jersey number is yet just choose something and it can be changed later.<br>
           <input size=5 type="text" placeholder="99" id="jerseyNumber" name="jerseyNumber" value="<?php if (isset($_POST["jerseyNumber"])){echo $_POST['jerseyNumber'];} ?>">
         </p>
         
@@ -298,3 +298,14 @@
 </div><!--main-full-->
 
 <?php get_footer(); ?>
+
+<script type="text/javascript">
+  new Pikaday({ 
+    field: document.getElementById('datepicker1'),
+    format: 'MM/DD/YYYY'
+  });
+  new Pikaday({ 
+    field: document.getElementById('datepicker2'),
+    format: 'MM/DD/YYYY'
+  });
+</script>
