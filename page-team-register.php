@@ -130,6 +130,7 @@
             SELECT term_id
             FROM wp_term_taxonomy
             WHERE taxonomy = 'sp_season'
+            ORDER BY term_id desc
           ");
 
           foreach ($season_term_ids as $term_id) {
@@ -144,6 +145,7 @@
             } else {
               echo '<option value="'.$season[0]->term_id.'">'.$season[0]->name.'</option>';
             }
+            break;
           } ?>
           </select>
         </p>
