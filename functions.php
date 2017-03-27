@@ -22,5 +22,7 @@ function marquee_child_scripts() {
     wp_enqueue_script( 'moment', get_stylesheet_directory_uri() . '/moment.js' );
     wp_enqueue_style( 'pikaday', get_stylesheet_directory_uri() . '/pikaday.css' );
     wp_enqueue_script( 'pikaday', get_stylesheet_directory_uri() . '/pikaday.js' );
+    wp_enqueue_script( 'client', 'https://js.braintreegateway.com/web/3.11.0/js/client.min.js' );
+    wp_enqueue_script( 'paypal', 'https://js.braintreegateway.com/web/3.11.0/js/paypal.min.js', 'client' );
 }
 add_action( 'wp_enqueue_scripts', 'marquee_child_scripts', 11 );

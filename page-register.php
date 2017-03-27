@@ -2,9 +2,16 @@
 
   /* Template Name: Registration Page */
 
+if (!isset($_GET['id']) && !isset($_POST['paypalName'])) {
+  header('Location: https://nu-lacrosse.com/signup/step-1-payment/');
+  exit;
+}
+
 ?>
 
 <?php get_header(); ?>
+
+
 
 <div id="primary" class="content-area content-area-full-width">
   <main id="main" class="site-main" role="main">
@@ -21,7 +28,6 @@
       $show_error = false;
       if (isset($_POST["submit"])) {
         if (strlen($_POST["playerName"]) > 0 &&
-            strlen($_POST["paypalName"]) > 0 &&
             strlen($_POST["birthday"]) > 0 &&
             strlen($_POST["email"]) > 0 &&
             strlen($_POST["phone"]) > 0 &&
@@ -138,8 +144,7 @@
       }?>
       <form method="POST">
         <p>
-          <strong>Important!</strong> Please enter the name of the person linked to the PayPal payment. We need this to verify all payments.<br>
-          <input size=40 type="text" placeholder="PayPal name" id="paypalName" name="paypalName" value="<?php if (isset($_POST["paypalName"])){echo $_POST['paypalName'];} ?>">
+          <input size=40 type="hidden" placeholder="PayPal name" id="paypalName" name="paypalName" value="<?php echo $_GET['id'].'-'.$_GET['email']; ?>">
         </p>
 
         <p>Player info:</p>
