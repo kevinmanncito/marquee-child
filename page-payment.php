@@ -7,8 +7,9 @@
  */
 
 require __DIR__ . '/vendor/autoload.php';
+$access_token = json_decode(file_get_contents(get_stylesheet_directory_uri() .'/config.json'))->access_token;
 $gateway = new Braintree_Gateway(array(
-  'accessToken' => 'access_token$sandbox$5q6d7x6kqhs8wnm8$925d1c4326325bbf8b64a710680c2d01',
+  'accessToken' => $access_token,
 ));
 
 get_header(); ?>
