@@ -53,6 +53,22 @@
           add_post_meta(intval($new_staff_id), 'sp_email', $email);
           add_post_meta(intval($new_staff_id), 'sp_role', ucwords($role));
 
+          // Subscribe the staff member to the email list
+          $ch = curl_init(); 
+          $mailgun_key = json_decode(file_get_contents(get_stylesheet_directory_uri() .'/config.json'))->mailgun_key;
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+          curl_setopt($ch, CURLOPT_USERPWD, 'api:'.$mailgun_key);
+          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+          curl_setopt($ch, CURLOPT_URL, "https://api.mailgun.net/v3/lists/info@mg.nu-lacrosse.com/members");
+          curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+            'subscribed' => true,
+            'address' => $email,
+            'name' => $staffName,
+            'description' => 'staff')
+          );
+          $res = curl_exec($ch);
+
           // Show the thank you message
           echo '<div>Thank you for registering! We will email you with your staff schedule soon.</div>';
 
@@ -76,7 +92,7 @@
 
         <p>
         <?php 
-          $roles = array('referee', 'staff', 'either');
+          $roles = array('referee', 'staff', 'coach', 'any');
         ?>
           Desired role: <br>
           <select name="role" id="role">

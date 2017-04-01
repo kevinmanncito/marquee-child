@@ -128,6 +128,22 @@ if (!isset($_GET['id']) && !isset($_POST['paypalName'])) {
           add_post_meta(intval($new_player_id), 'sp_us_lacrosse_expiration', $usLacrosseExpiration);
           add_post_meta(intval($new_player_id), 'sp_us_lacrosse_zip', intval($usLacrosseZip));
 
+          // Subscribe the player to the email list
+          $ch = curl_init(); 
+          $mailgun_key = json_decode(file_get_contents(get_stylesheet_directory_uri() .'/config.json'))->mailgun_key;
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+          curl_setopt($ch, CURLOPT_USERPWD, 'api:'.$mailgun_key);
+          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+          curl_setopt($ch, CURLOPT_URL, "https://api.mailgun.net/v3/lists/info@mg.nu-lacrosse.com/members");
+          curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+            'subscribed' => true,
+            'address' => $email,
+            'name' => $playerName,
+            'description' => 'player')
+          );
+          $res = curl_exec($ch);
+
           // Show the thank you message
           echo '<div>Thank you for registering! We look forward to seeing you on the field this summer!</div>';
 
