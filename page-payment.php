@@ -42,7 +42,7 @@ var clientToken = "<?php echo($clientToken = $gateway->clientToken()->generate()
 // Fetch the button you are using to initiate the PayPal flow
 var paypalButton = document.getElementById('paypal-button');
 
-var AMOUNT = 65.00;
+var AMOUNT = 80.0;
 
 // Create a Client component
 braintree.client.create({
