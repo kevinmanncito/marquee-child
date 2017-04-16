@@ -69,38 +69,38 @@ if (!isset($_GET['id']) && !isset($_POST['paypalName'])) {
           // The Revengers: 80
           // Tropic Thunder: 86
 
-          $failed_validation = false;
+          // $failed_validation = false;
 
-          if (intval($team) == 32) {
-            if ($password != "badastros") {
-              $failed_validation = true;
-            }
-          }
-          if (intval($team) == 35) {
-            if ($password != "beards") {
-              $failed_validation = true;
-            }
-          }
-          if (intval($team) == 34) {
-            if ($password != "ribbit") {
-              $failed_validation = true;
-            }
-          }
-          if (intval($team) == 86) {
-            if ($password != "psych") {
-              $failed_validation = true;
-            }
-          }
-          if (intval($team) == 80) {
-            if ($password != "belax") {
-              $failed_validation = true;
-            }
-          }
+          // if (intval($team) == 32) {
+          //   if ($password != "badastros") {
+          //     $failed_validation = true;
+          //   }
+          // }
+          // if (intval($team) == 35) {
+          //   if ($password != "beards") {
+          //     $failed_validation = true;
+          //   }
+          // }
+          // if (intval($team) == 34) {
+          //   if ($password != "ribbit") {
+          //     $failed_validation = true;
+          //   }
+          // }
+          // if (intval($team) == 86) {
+          //   if ($password != "psych") {
+          //     $failed_validation = true;
+          //   }
+          // }
+          // if (intval($team) == 80) {
+          //   if ($password != "belax") {
+          //     $failed_validation = true;
+          //   }
+          // }
 
-          if ($failed_validation) {
-            $bio = $bio.'. Player attemped to register for team id: '.$team.' and entered: '.$password;
-            $team = "41";
-          }
+          // if ($failed_validation) {
+          //   $bio = $bio.'. Player attemped to register for team id: '.$team.' and entered: '.$password;
+          //   $team = "41";
+          // }
 
           // First create the player (post) and get the id
           $post = array(

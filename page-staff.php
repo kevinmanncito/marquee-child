@@ -25,7 +25,8 @@
             strlen($_POST["phone"]) > 0 &&
             $_POST["role"] !== "unselected" &&
             $_POST["availability"] !== "unselected" &&
-            $_POST["experience"] !== "unselected") {
+            $_POST["experience"] !== "unselected" &&
+            $_POST["location"] !== "unselected") {
 
           $staffName = htmlentities($_POST["staffName"]);
           $email = htmlentities($_POST["email"]);
@@ -33,10 +34,12 @@
           $bio = htmlentities($_POST["bio"]);
           $role = htmlentities($_POST["role"]);
           $availability = htmlentities($_POST["availability"]);
+          $location = htmlentities($_POST["location"]);
           $experience = htmlentities($_POST["experience"]);
 
           // Format the bio with additional info
           $bio = 'Availability: ' . ucwords($availability) . '<br>' .
+                 'Location availability: ' . $location . '<br><br>' .
                  'Experience: ' . $experience . '<br><br>' .
                  $bio;
           // First create the player (post) and get the id
@@ -125,6 +128,38 @@
               }
             }
           ?>
+          </select>
+        </p>
+
+        <p>
+          Location availability: <br>
+          <select name="location" id="location">
+        <?php  // Getting the list of positions
+          $location_term_ids = $wpdb->get_results( "
+            SELECT term_id
+            FROM wp_term_taxonomy
+            WHERE taxonomy = 'sp_venue'
+          ");
+
+          echo '<option value="unselected">--Select one--</option>';
+
+          foreach ($location_term_ids as $location_id) {
+            $location = $wpdb->get_results( "
+              SELECT *
+              FROM wp_terms
+              WHERE term_id = ".$location_id->term_id
+            );
+            // var_dump($location);
+            if ($_POST["location"] === $location[0]->name) {
+              echo '<option value="'.$location[0]->name.'" selected>'.$location[0]->name.'</option>';
+            } else {
+              echo '<option value="'.$location[0]->name.'">'.$location[0]->name.'</option>';
+            }
+          } 
+
+          echo '<option value="all">All</option>';
+          ?>
+
           </select>
         </p>
 
