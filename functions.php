@@ -26,3 +26,6 @@ function marquee_child_scripts() {
     wp_enqueue_script( 'paypal', 'https://js.braintreegateway.com/web/3.11.0/js/paypal.min.js', 'client' );
 }
 add_action( 'wp_enqueue_scripts', 'marquee_child_scripts', 11 );
+
+// Enable shortcodes in text widgets
+add_filter('widget_text','do_shortcode');
