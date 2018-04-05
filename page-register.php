@@ -3,7 +3,7 @@
   /* Template Name: Registration Page */
 
 if (!isset($_GET['id']) && !isset($_POST['paypalName'])) {
-  header('Location: https://nu-lacrosse.com/signup/step-1-payment/');
+  header('Location: https://utahlacrosseleague.com/signup/step-1-payment/');
   exit;
 }
 
