@@ -29,6 +29,8 @@ get_header(); ?>
 
             <?php endwhile; // end of the loop. ?>
 
+            <script src="https://www.paypalobjects.com/api/button.js?" data-merchant="braintree" data-id="paypal-button" data-button="paynow" data-size="medium" data-button_type="submit" data-button_disabled="false" ></script>
+
         </main><!-- #main -->
     </div><!-- #primary -->
 
