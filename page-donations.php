@@ -76,7 +76,6 @@ var paypalButton = document.getElementById('paypal-button');
 var AMOUNT = 0.0;
 
 
-
 // Create a Client component
 braintree.client.create({
     authorization: clientToken
