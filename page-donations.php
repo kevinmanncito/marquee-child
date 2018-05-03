@@ -113,7 +113,7 @@ braintree.client.create({
 
                     // Display success page
                     var container = document.getElementById('main');
-                    container.innerHTML = "Thank you for your donation! You will recieve a confirmation email from PayPal";
+                    container.innerHTML = "<div class='entry-content'>Thank you for your donation! You will recieve a confirmation email from PayPal.</div>";
                     // window.location.href = "/signup/step-2-player-info?q=&id="+json.transaction_id+"&email="+tokenizationPayload.details.email;
                 }
             }
