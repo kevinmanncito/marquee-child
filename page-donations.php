@@ -122,6 +122,7 @@ braintree.client.create({
         flow: 'checkout', // Required
         amount: AMOUNT, // Required
         currency: 'USD', // Required
+        useraction: 'commit',
         locale: 'en_US'
       }, function (err, tokenizationPayload) {
         if (!err) {
