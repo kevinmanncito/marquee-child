@@ -53,12 +53,24 @@ get_header(); ?>
                 </select>
               </p>
               <p>
-                Please enter the amount you would like to donate<br>
+                Please select your sponsorship package<br>
+                <select name="package" id="package">
+                  <option value="">--Select--</option>
+                  <option value="7400">League - $7,400</option>
+                  <option value="2500">Gold - $2,500</option>
+                  <option value="1000">Silver - $1,000</option>
+                  <option value="500">Bronze - $500</option>
+                </select>
+              </p>
+              <p>
+                Or
+              </p>
+              <p>
+                Manually enter the amount you would like to donate<br>
                 <span>$<input type="number" id="donation-amount" name="donationAmount" placeholder="20.00" required></span>
               </p>
               <script src="https://www.paypalobjects.com/api/button.js?" data-merchant="braintree" data-id="paypal-button" data-button="paynow" data-size="medium" data-button_type="submit" data-button_disabled="false" ></script>
             </form>
-
 
         </main><!-- #main -->
     </div><!-- #primary -->
@@ -66,6 +78,17 @@ get_header(); ?>
 <?php get_footer(); ?>
 
 <script type="text/javascript">
+
+document.getElementById('package').addEventListener('change', function(e) {
+  try {
+    var packageAmount = parseFloat(e.target.value);
+    document.getElementById('donation-amount').value = packageAmount;
+  } catch {}
+});
+
+document.getElementById('donation-amount').addEventListener('change', function(e) {
+  document.getElementById('package').selectedIndex = 0;
+});
 
 //Client token
 var clientToken = "<?php echo($clientToken = $gateway->clientToken()->generate()); ?>";
